@@ -1,1 +1,3 @@
 # quiz
+
+Pseudo Code
