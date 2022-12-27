@@ -10,66 +10,61 @@
 <body>
     <header>
         <a href="#" alt="link to high scores chart">High Scores</a>
-        <h1>JavaScript Quiz</h1>
-        <p>Time:</p>
-
-
-        
-
-
+        <h1 >JavaScript Quiz</h1>
+        <p id="clock">Time:</p>
     </header>
         
     <main>
-        <section>    
+        <section id="intro">    
             <p>This quiz is designed to test your knowledge of JavaCript Basics in a fun and challenging way. When you complete the quiz enter your initials to see how you rank against your peers. </p>
             <p>To begin press <span>start quiz</span> below. When you begin the quiz a time will start in the upper right hand corner you will begin with 5 minutes to complete the quiz, if you get a question wrong then 30 seconds will be deducted of the clock. If the time runs out then the quiz is over. </p>
             <p>Good Luck!</p>
-            <button>Start Quiz</button>
+            <button id="startbutton">Start Quiz</button>
         </section>    
     
-        <section id="q1">
+        <section id="q1" class="questions">
             <p >How do you link to an external JavaScript file in your HTML document? </p>
             <button class="wrong">A. Add link tag in the head.</button>
             <button class="wrong">B. After the HTML closing tag use a script tag.</button>
             <button class="correct">C. Add a script tag at the end of your document just before the closing body tag for external JS.</button>
             <button class="wrong">D. Don't worry about adding it in the HTML document, just have it in the same folder as your index.HTML</button>
         </section>
-        <section id="q2">
+        <section id="q2" class="questions">
             <p >What is one way to assign a variable in JavaScript?</p>
             <button class="wrong">A. variable = value</button>
             <button class="correct">B. var = value </button>
             <button class="wrong">C. var === value</button>
             <button class="wrong">D. variable === value</button>
         </section>
-        <section id="q3">
+        <section id="q3" class="questions">
             <p >Giving a variable value before defining is called _____.</p>
             <button class="wrong">A. Propping</button>
             <button class="wrong">B. Scaffolding</button>
             <button class="wrong">C. Joisting</button>
             <button class="correct">D. Hoisting</button>
         </section>
-        <section id="q4">
+        <section id="q4" class="questions">
             <p>What are the seven primitive data types?</p>
             <button class="wrong">A. string, smallint, bigint, boolean, undefined, symbol, and null </button>
             <button class="correct">B. string, number, bigint(number), boolean, undefined, symbol, and null</button>
             <button class="wrong">C. string, smallint, bigint(number), boolean, undefined, symbol, and n/a</button>
             <button class="wrong">D. string, NaN, number, boolean, undefined, symbol, and null</button>
         </section>
-        <section id="q5">
+        <section id="q5" class="questions">
             <p>In order to display writing in the browser console you would use which of the following?</p>
             <button class="correct">A. console.log()</button>
             <button class="wrong">B. print.console()</button>
             <button class="wrong">C. innerHTML</button>
             <button class="wrong">D. document.write()</button>
         </section>
-        <section id="q6">
+        <section id="q6" class="questions">
             <p>var = ["picture", "balloon", "dumbo", "mouse"]; is an example of a/an ________. </p>
             <button class="wrong">A. List</button>
             <button class="wrong">B. String</button>
             <button class="correct">C. Array</button>
             <button class="wrong">D. Large variable</button>
         </section>
-        <section id="q7">
+        <section id="q7" class="questions">
             <p>
                 <pre>
 for (var i = 0; i < array.length; i++) {
@@ -81,7 +76,7 @@ for (var i = 0; i < array.length; i++) {
             <button class="wrong">C. Iteration Loop</button>
             <button class="wrong">D. Iteration Statement</button>
         </section>
-        <section id="q8">
+        <section id="q8" class="questions">
             <p>
                 <pre>
 function animals(){
@@ -102,7 +97,7 @@ function animals(){
             <button class="wrong">C. Global</button>
             <button class="correct">D. Lexical</button>
         </section>
-        <section id="q9">
+        <section id="q9" class="questions">
             <p>
                 <pre>
 function animals(){
@@ -122,7 +117,7 @@ function animals(){
             <button class="wrong">C. Array</button>
             <button class="wrong">D. Variable</button>
         </section>
-        <section id="q10">
+        <section id="q10" class="questions">
             <p><pre>
 var dog = {
     name: "Hiccup"
@@ -130,12 +125,22 @@ var dog = {
     birthday: "06-11-2020"
     species: "canine"
 }
-
             </pre> The above is an example of a/an ______.  </p>
+
             <button class="wrong">A. Array</button>
             <button class="wrong">B. Large Variable</button>
             <button class="wrong">C. Collection</button>
             <button class="correct">D. Object</button>
+        </section>
+        <section id="final-score">
+            <h2>All Done</h2> 
+            <p>Your final score:</p>
+            <p>Enter your initials:<form type="text"></form></p>
+            <button id="initail-button">Submit</button>
+        </section>
+        <section id="score-board">
+            <h2>High Score</h2>
+           
         </section>
     </main>
 
