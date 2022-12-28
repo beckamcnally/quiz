@@ -7,7 +7,6 @@ body {
     background-color: blueviolet;
     font-size: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-indent: 2em;
 }
 
 header {
@@ -30,8 +29,6 @@ header a, header p {
     text-align: justify;
     margin: 200px 300px;
     padding: 10px 40px; 
-border: 5px solid red;
-
 }
 
 #final-score, #score-board {
@@ -44,7 +41,6 @@ border: 5px solid red;
     text-align: justify;
     margin: 200px 300px;
     padding: 10px 40px; 
-border: 5px solid red;
   display: none; /*Used to hide the questions - using display because don't want it to take up space*/
 }
 
@@ -62,7 +58,7 @@ border: 5px solid red;
 }
 /* going to want center box to remain larger then the others*/
 
- header p {
+#clock {
     visibility: hidden;
 }  /*   going to want to hide this until called in js - using visibility because want it to still take up the space */
 
