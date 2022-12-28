@@ -31,7 +31,7 @@ function beginQuiz() {
 
 
     // a function that takes the selection made and sees if it is write or not and displays correct or wrong 
-    
+    answers()
     // a function that progresses to the next question and subtracts time if incorrect
 
 }
@@ -46,20 +46,19 @@ function questionPicker() {
     }
 }
 
-//document.getElementById("final-score").style.display = "block"
+
 
 // this function is going to start the timer 
  function timer() {
     document.getElementById("clock").style.visibility = "visible";
     time--;
-    counter.textContent = time;
-
-    
+    counter.textContent = time;  
 }
-// timer is in ms if 1 second = 1000ms and I want 5 mins there are 60 seconds in a min then its 60000 ms per min so 300000 and the penalty is 30 seconds so 30000 ms
-// 4. user chooses answer by clicking on answer buttons or pressing corresponding letter key
-//     A. use 
 
+
+// 4. user chooses answer by clicking on answer buttons or pressing corresponding letter key
+
+//document.getElementById("final-score").style.display = "block"
 // 5. wrong or correct if the displayed on screen under answers
 
 // 6. steps 2 - 5 repeat until 5 questions have been answered or time runs out 
@@ -76,7 +75,7 @@ function submitInts(){ //this is where I am going to need to use the local stora
 }
 
 // 9. need an event listener for the high score link that unhides it when the link is clicked
-/*document.getElementById("score-board").addEventListener("click", highScore())
+document.getElementById("highLink").addEventListener("click", highScore)
 function highScore() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("score-board").style.display = "block"
