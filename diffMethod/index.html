@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>JavaScript Quiz</title>
+</head>
+<body>
+    <header>
+        <a id="highLink" href="#" alt="link to high scores chart">High Scores</a>
+        <h1 >JavaScript Quiz</h1>
+        <p id="clock">Time: <span id="counter">0</span> </p>
+    </header>
+
+    <main>
+        <section id="intro">    
+            <p>This quiz is designed to test your knowledge of JavaCript Basics in a fun and challenging way. When you complete the quiz enter your initials to see how you rank against your peers. </p>
+            <p>To begin press <span>start quiz</span> below. When you begin the quiz a time will start in the upper right hand corner you will begin with 5 minutes to complete the quiz, if you get a question wrong then 30 seconds will be deducted of the clock. If the time runs out then the quiz is over. </p>
+            <p>Good Luck!</p>
+            <button id="startbtn">Start Quiz</button>
+        </section>  
+
+        <section id="questContainer">
+            <h2 id="question"></h2>
+            <ul id="ansOptions">
+                <li><button></button></li>
+                <li><button></button></li>
+                <li><button></button></li>
+                <li><button></button></li>
+            </ul>
+        </section>
+        <section id="game-ver" class="hide">
+            <h2 >You are done!</h2>
+            <label>Score: <span>0</span></label>
+            <label>Enter your Initials: <input type="text"> </label>            
+        </section>
+
+    </main>
+    <script src="./assets/script.js"></script>
+</body>
+</html>

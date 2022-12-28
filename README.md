@@ -1,3 +1,3 @@
 # quiz
 
-Pseudo Code
+https://davidwalsh.name/event-delegate

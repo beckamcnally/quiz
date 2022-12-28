@@ -21,48 +21,54 @@
             <p>Good Luck!</p>
             <button id="startbutton">Start Quiz</button>
         </section>    
-    
+    <div id="listOfQuestions">
         <section id="q1" class="questions">
             <p >How do you link to an external JavaScript file in your HTML document? </p>
-            <button class="answers" class="wrong">A. Add link tag in the head.</button>
-            <button class="answers" class="wrong">B. After the HTML closing tag use a script tag.</button>
-            <button class="answers" class="correct">C. Add a script tag at the end of your document just before the closing body tag for external JS.</button>
-            <button class="answers" class="wrong">D. Don't worry about adding it in the HTML document, just have it in the same folder as your index.HTML</button>
+            <button class="wrong">A. Add link tag in the head.</button>
+            <button class="wrong">B. After the HTML closing tag use a script tag.</button>
+            <button class="correct">C. Add a script tag at the end of your document just before the closing body tag for external JS.</button>
+            <button class="wrong">D. Don't worry about adding it in the HTML document, just have it in the same folder as your index.HTML</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q2" class="questions">
             <p >What is one way to assign a variable in JavaScript?</p>
-            <button class="answers" class="wrong">A. variable = value</button>
-            <button class="answers" class="correct">B. var = value </button>
-            <button class="answers" class="wrong">C. var === value</button>
-            <button class="answers" class="wrong">D. variable === value</button>
+            <button class="wrong">A. variable = value</button>
+            <button class="correct">B. var = value </button>
+            <button class="wrong">C. var === value</button>
+            <button class="wrong">D. variable === value</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q3" class="questions">
             <p >Giving a variable value before defining is called _____.</p>
-            <button class="answers" class="wrong">A. Propping</button>
-            <button class="answers" class="wrong">B. Scaffolding</button>
-            <button class="answers" class="wrong">C. Joisting</button>
-            <button class="answers" class="correct">D. Hoisting</button>
+            <button class="wrong">A. Propping</button>
+            <button class="wrong">B. Scaffolding</button>
+            <button class="wrong">C. Joisting</button>
+            <button class="correct">D. Hoisting</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q4" class="questions">
             <p>What are the seven primitive data types?</p>
-            <button class="answers" class="wrong">A. string, smallint, bigint, boolean, undefined, symbol, and null </button>
-            <button class="answers" class="correct">B. string, number, bigint(number), boolean, undefined, symbol, and null</button>
-            <button class="answers" class="wrong">C. string, smallint, bigint(number), boolean, undefined, symbol, and n/a</button>
-            <button class="answers" class="wrong">D. string, NaN, number, boolean, undefined, symbol, and null</button>
+            <button class="wrong">A. string, smallint, bigint, boolean, undefined, symbol, and null </button>
+            <button class="correct">B. string, number, bigint(number), boolean, undefined, symbol, and null</button>
+            <button class="wrong">C. string, smallint, bigint(number), boolean, undefined, symbol, and n/a</button>
+            <button class="wrong">D. string, NaN, number, boolean, undefined, symbol, and null</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q5" class="questions">
             <p>In order to display writing in the browser console you would use which of the following?</p>
-            <button class="answers" class="correct">A. console.log()</button>
-            <button class="answers" class="wrong">B. print.console()</button>
-            <button class="answers" class="wrong">C. innerHTML</button>
-            <button class="answers" class="wrong">D. document.write()</button>
+            <button class="correct">A. console.log()</button>
+            <button class="wrong">B. print.console()</button>
+            <button class="wrong">C. innerHTML</button>
+            <button class="wrong">D. document.write()</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q6" class="questions">
             <p>var = ["picture", "balloon", "dumbo", "mouse"]; is an example of a/an ________. </p>
-            <button class="answers" class="wrong">A. List</button>
-            <button class="answers" class="wrong">B. String</button>
-            <button class="answers" class="correct">C. Array</button>
-            <button class="answers" class="wrong">D. Large variable</button>
+            <button class="wrong">A. List</button>
+            <button class="wrong">B. String</button>
+            <button class="correct">C. Array</button>
+            <button class="wrong">D. Large variable</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q7" class="questions">
             <p>
@@ -71,10 +77,11 @@ for (var i = 0; i < array.length; i++) {
      console.log(array[i]);
 }
 </pre>is an example of a/an ______. </p>
-            <button class="answers" class="wrong">A. Four Loop</button>
-            <button class="answers" class="correct">B. For Loop</button>
-            <button class="answers" class="wrong">C. Iteration Loop</button>
-            <button class="answers" class="wrong">D. Iteration Statement</button>
+            <button class="wrong">A. Four Loop</button>
+            <button class="correct">B. For Loop</button>
+            <button class="wrong">C. Iteration Loop</button>
+            <button class="wrong">D. Iteration Statement</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q8" class="questions">
             <p>
@@ -96,6 +103,7 @@ function animals(){
             <button class="answers" class="wrong">B. Local</button>
             <button class="answers" class="wrong">C. Global</button>
             <button class="answers" class="correct">D. Lexical</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q9" class="questions">
             <p>
@@ -116,6 +124,7 @@ function animals(){
             <button class="answers" class="wrong">B. Statement</button>
             <button class="answers" class="wrong">C. Array</button>
             <button class="answers" class="wrong">D. Variable</button>
+            <h3 class="rightWrong"></h3>
         </section>
         <section id="q10" class="questions">
             <p><pre>
@@ -127,11 +136,13 @@ var dog = {
 }
             </pre> The above is an example of a/an ______.  </p>
 
-            <button class="answers" class="wrong">A. Array</button>
-            <button class="answers" class="wrong">B. Large Variable</button>
-            <button class="answers" class="wrong">C. Collection</button>
-            <button class="answers" class="correct">D. Object</button>
+            <button class="wrong">A. Array</button>
+            <button class="wrong">B. Large Variable</button>
+            <button class="wrong">C. Collection</button>
+            <button class="correct">D. Object</button>
+            <h3 class="rightWrong"></h3>
         </section>
+    </div>
         <section id="final-score">
             <h2>All Done</h2> 
             <p>Your final score:</p>

@@ -13,6 +13,9 @@ var quest = ""
 var clock = document.getElementById("clock")
 var counter = document.getElementById("counter") 
 var time = questionList.length * 20
+var rightWrong = document.getElementsByClassName("rightWrong")
+
+
 // User clicks start quiz
 document.getElementById("startbutton").addEventListener("click", beginQuiz)
 //     A.clock begins when quiz starts
@@ -29,11 +32,18 @@ function beginQuiz() {
     timer();
     var interval = setInterval(timer,1000);
 
-
     // a function that takes the selection made and sees if it is write or not and displays correct or wrong 
-    answers()
+    document.getElementById("listOfQuestions").addEventListener("click", function(event){
+        var selection = event.target
+        if (selection === selection.matches("correct")){
+            console.log("Eureka!");
+            rightWrong.textContent = "Correct!";
+        } else {
+            console.log("at least it's working");
+            rightWrong.textContent = "Wrong!";
+        }
+    })
     // a function that progresses to the next question and subtracts time if incorrect
-
 }
 
     // this function is to randomly select a question
@@ -45,6 +55,8 @@ function questionPicker() {
     return;
     }
 }
+
+
 
 
 
