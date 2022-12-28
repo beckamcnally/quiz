@@ -11,7 +11,8 @@ body {
 
 header {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 h1 {
@@ -45,7 +46,7 @@ header a, header p {
 }
 
 
-#startbutton, #initail-button {
+#startbutton, #initial-button {
     padding: 10px;
     background-color: pink;
     border: none;
