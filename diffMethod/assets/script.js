@@ -6,7 +6,7 @@ var ansContainer = document.getElementById("ansContainer")
 var rightWrong = document.getElementById("rightWrong")
 var clock = document.getElementById("clock")
 var counter = document.getElementById("counter")
-
+var ansContainer = document.getElementById("ansContainer")
 var questionArray = [
     {
         question: "How do you link to an external JavaScript file in your HTML document?",
@@ -70,6 +70,7 @@ function beginGame(){
 
     getQuestions();
     
+    
 }
 
 // function to define clock
@@ -86,7 +87,28 @@ function workingClock(){
 
 //Function 2 - get a question from the array, and the create the buttons for my array of choices
 function getQuestions() {
-    question
+    var currentQ = questionArray[questIndex];
+    question.textContent = currentQ.question;
+    ansContainer.innerHTML = "";
+    
+    for (let i = 0; i < currentQ.choices.length; i++) {
+        var selection = currentQ.choices[i];
+        var selectBtn = document.createElement ("button")
+        selectBtn.setAttribute("class", "selection")
+        selectBtn.setAttribute("value", selection);
+        selectBtn.textContent = selection;
+        ansContainer.appendChild(selectBtn);
+    }
+    ansContainer.addEventListener("click",function getAnswer (event) {
+        var clickedAns = event.target
+    
+    
+    if (clickedAns.textContent === currentQ.answer){
+    console.log("its working")
+    } else {
+        console.log("at least its working")
+    }
+    });
 }
 
 startBtn.addEventListener("click", beginGame)
