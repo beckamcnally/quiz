@@ -7,6 +7,7 @@ var rightWrong = document.getElementById("rightWrong")
 var clock = document.getElementById("clock")
 var counter = document.getElementById("counter")
 var ansContainer = document.getElementById("ansContainer")
+var gameOver = document.getElementById("game-over")
 var questionArray = [
     {
         question: "How do you link to an external JavaScript file in your HTML document?",
@@ -59,7 +60,8 @@ var questionArray = [
 ]
 
 var questIndex = 0;
-var time = questionArray.length * 20;
+var time = questionArray.length * 1;
+var endTime = "";
 
 // Function 1 - start the clock, hide intro and unhide the questions
 function beginGame(){
@@ -67,6 +69,9 @@ function beginGame(){
     questContainer.removeAttribute("class", "hide");
 
     var interval = setInterval(workingClock, 1000);
+    endTime = interval
+    
+    
 
     getQuestions();
     
@@ -79,10 +84,18 @@ function workingClock(){
     time--;
     counter.textContent = time;
     
-    if (time < 0) {
-        // need function that ends game
+    if (time === 0) {
+         // need function that ends game
+         endGame()
+    } //else if there are no more questions capture time as score
+}
+function endGame(){
+        questContainer.setAttribute("class", "hide");
+        gameOver.removeAttribute("class", "hide");
+        clock.setAttribute("class", "hidden");
+        
+         clearInterval(endTime); 
         console.log(time)
-    }
 }
 
 //Function 2 - get a question from the array, and the create the buttons for my array of choices
@@ -104,9 +117,9 @@ function getQuestions() {
     
     
     if (clickedAns.textContent === currentQ.answer){
-    console.log("its working")
+        rightWrong.textContent = "Correct!"
     } else {
-        console.log("at least its working")
+        rightWrong.textContent = "Wrong!"
     }
     });
 }
