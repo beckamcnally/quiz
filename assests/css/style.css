@@ -52,6 +52,11 @@ header a, header p {
     border: none;
     
 }
+h3 {
+    
+    padding: 40px;
+    font-size: 30px;
+}
 
 .questions button {
     margin: 0 450px 5px 10px;

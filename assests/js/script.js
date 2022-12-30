@@ -13,7 +13,9 @@ var quest = ""
 var clock = document.getElementById("clock")
 var counter = document.getElementById("counter") 
 var time = questionList.length * 20
-var rightWrong = document.getElementsByClassName("rightWrong")
+var rightWrong = document.querySelectorAll("h3");
+
+ // Maybe instead I can just add it whenever a question is selected  // rightWrong is an array and I would need it to choose the correct h3 for 
 //=====VARS above this line
 
 // User clicks start quiz and code runs beginQuiz
@@ -36,10 +38,13 @@ function beginQuiz() {
         var selection = event.target
         if (selection === selection.matches("correct")){
             console.log("Eureka!");
-            rightWrong.textContent = "Correct!";
+            rightWrong.forEach((par, index) => {
+                par.textContent = "Correct!"
+            }); 
         } else {
             console.log("at least it's working");
-            rightWrong.textContent = "Wrong!";
+            rightWrong.forEach((par, index) => {
+                par.textContent = "Wrong!" });
         }
     })
     // a function that progresses to the next question and subtracts time if incorrect
