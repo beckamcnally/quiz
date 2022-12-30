@@ -14,12 +14,11 @@ var clock = document.getElementById("clock")
 var counter = document.getElementById("counter") 
 var time = questionList.length * 20
 var rightWrong = document.getElementsByClassName("rightWrong")
+//=====VARS above this line
 
-
-// User clicks start quiz
+// User clicks start quiz and code runs beginQuiz
 document.getElementById("startbutton").addEventListener("click", beginQuiz)
-//     A.clock begins when quiz starts
-//         i. event listener click start quiz
+// ======EVENTS above this line
 
 // this function will run the game there will be other supporting functions to make it run
 function beginQuiz() {
@@ -49,7 +48,7 @@ function beginQuiz() {
     // this function is to randomly select a question
 function questionPicker() {
     for (var i = 0; i < 1; i++){
-        var randomQuestion = questionList[Math.floor(Math.random() * questionList.length)]
+        var randomQuestion = questionList[Math.floor(Math.random() * questionList.length)];
 
     quest = randomQuestion 
     return;

@@ -8,6 +8,7 @@ var clock = document.getElementById("clock")
 var counter = document.getElementById("counter")
 var ansContainer = document.getElementById("ansContainer")
 var gameOver = document.getElementById("game-over")
+var finalScore = document.getElementById("finalScore")
 var questionArray = [
     {
         question: "How do you link to an external JavaScript file in your HTML document?",
@@ -62,6 +63,7 @@ var questionArray = [
 var questIndex = 0;
 var time = questionArray.length * 1;
 var endTime = "";
+var userAns = "";
 
 // Function 1 - start the clock, hide intro and unhide the questions
 function beginGame(){
@@ -93,9 +95,10 @@ function endGame(){
         questContainer.setAttribute("class", "hide");
         gameOver.removeAttribute("class", "hide");
         clock.setAttribute("class", "hidden");
-        
-         clearInterval(endTime); 
+        clearInterval(endTime);  
+        finalScore.textContent = time;
         console.log(time)
+        
 }
 
 //Function 2 - get a question from the array, and the create the buttons for my array of choices
@@ -104,24 +107,40 @@ function getQuestions() {
     question.textContent = currentQ.question;
     ansContainer.innerHTML = "";
     
-    for (let i = 0; i < currentQ.choices.length; i++) {
+    for (var i = 0; i < currentQ.choices.length; i++) {
         var selection = currentQ.choices[i];
         var selectBtn = document.createElement ("button")
         selectBtn.setAttribute("class", "selection")
         selectBtn.setAttribute("value", selection);
         selectBtn.textContent = selection;
         ansContainer.appendChild(selectBtn);
-    }
-    ansContainer.addEventListener("click",function getAnswer (event) {
-        var clickedAns = event.target
+}    
+      
+ansContainer.addEventListener("click",function getAnswer (event) {
+    var clickedAns = event.target 
+    userAns = clickedAns
+    finalScore.textContent = time;
+        console.log(time)  
+    console.log("next quest!!!")
+
+if (userAns.textContent === currentQ.answer){
+        rightWrong.textContent = "Correct!";
+        ansContainer.innerHTML = "";
+        question.innerHTML = "";
+        // rightWrong.innerHTML = "";
+      } else {
+        rightWrong.textContent = "Wrong!";
+        ansContainer.innerHTML = "";
+        question.innerHTML = "";
+        // rightWrong.innerHTML = "";
+      }
     
-    
-    if (clickedAns.textContent === currentQ.answer){
-        rightWrong.textContent = "Correct!"
-    } else {
-        rightWrong.textContent = "Wrong!"
-    }
-    });
+});
 }
+    // if (i === -1){
+    //     finalScore.textContent = time;
+    //     endGame();
+    // };
+
 
 startBtn.addEventListener("click", beginGame)
