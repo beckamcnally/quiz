@@ -33,8 +33,21 @@
         <section id="game-over" class="hide">
             <h2 >You are done!</h2>
             <label>Score: <span id="finalScore">0</span></label>
-            <label>Enter your Initials: <input type="text"> </label>   
-            <button>Submit</button>         
+            <label>Enter your Initials: <input type="text" id="ints"> </label>   
+            <button id="submitInt">Submit</button>         
+        </section>
+
+        <section id="scoreBoard" class="hide">
+            <ul>
+                <h2>Score Board</h2>
+                <li class="leaderBoardInts"></li>
+                <li class="leaderBoardInts"></li>
+                <li class="leaderBoardInts"></li>
+                <li class="leaderBoardInts"></li>
+                <li class="leaderBoardInts"></li>
+            </ul>
+            <button id="again">Try Again</button>
+            <button id="clear">Clear Scores</button>
         </section>
 
     </main>

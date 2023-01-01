@@ -14,50 +14,62 @@ var clock = document.getElementById("clock")
 var counter = document.getElementById("counter") 
 var time = questionList.length * 20
 var rightWrong = document.querySelectorAll("h3");
-
- // Maybe instead I can just add it whenever a question is selected  // rightWrong is an array and I would need it to choose the correct h3 for 
+var intTimer = ""
+  
 //=====VARS above this line
 
 // User clicks start quiz and code runs beginQuiz
 document.getElementById("startbutton").addEventListener("click", beginQuiz)
 // ======EVENTS above this line
 
-// this function will run the game there will be other supporting functions to make it run
+// this function starts the game, gets a question, hides the intro, 
 function beginQuiz() {
      questionPicker();
     
     document.getElementById("intro").style.display = "none"; // makes intro not visible 
 
-    quest.setAttribute("style", "display: flex;"); 
+    // took quest display line out and put in questionPicker
 
     timer();
     var interval = setInterval(timer,1000);
+    interval = intTimer
 
     // a function that takes the selection made and sees if it is write or not and displays correct or wrong 
-    document.getElementById("listOfQuestions").addEventListener("click", function(event){
-        var selection = event.target
-        if (selection === selection.matches("correct")){
-            console.log("Eureka!");
-            rightWrong.forEach((par, index) => {
-                par.textContent = "Correct!"
-            }); 
-        } else {
-            console.log("at least it's working");
-            rightWrong.forEach((par, index) => {
-                par.textContent = "Wrong!" });
-        }
-    })
+  //== took code and put in question picker for loop
     // a function that progresses to the next question and subtracts time if incorrect
 }
 
     // this function is to randomly select a question
 function questionPicker() {
-    for (var i = 0; i < 1; i++){
-        var randomQuestion = questionList[Math.floor(Math.random() * questionList.length)];
+  for (var i = 0; i < 5; i++){
+    var randomQuestion = questionList[Math.floor(Math.random() * questionList.length)];
 
-    quest = randomQuestion 
-    return;
-    }
+
+
+    randomQuestion.setAttribute("style", "display: flex;"); 
+
+
+    document.getElementById("listOfQuestions").addEventListener("click", function(event){
+    var selection = event.target
+    
+    if (selection.matches(".correct")){
+        
+      rightWrong.forEach((par, index) => {
+      par.textContent = "Correct!"
+      }); 
+      questionPicker()
+      } else {
+      rightWrong.forEach((par, index) => {
+      par.textContent = "Wrong!" });
+        }
+      });
+      
+
+    
+  return;
+  }
+
+
 }
 
 
