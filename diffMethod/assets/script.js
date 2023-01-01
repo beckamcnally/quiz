@@ -15,7 +15,7 @@ var scoreBoard = document.getElementById("scoreBoard")
 var clear = document.getElementById("clear")
 var again = document.getElementById("again")
 var leaderBoardInts = document.querySelectorAll(".leaderBoardInts")
-
+var highLink =  document.getElementById("highLink")
 var questionArray = [
     {
         question: "How do you link to an external JavaScript file in your HTML document?",
@@ -68,7 +68,7 @@ var questionArray = [
 ]
 var currentQ = "";
 var questIndex = 0;
-var time = questionArray.length * 20;
+var time = questionArray.length * 30;
 var endTime = "";
 var userAns = "";
 
@@ -102,7 +102,7 @@ function endGame(){
         console.log(time) 
         
         // makes it so that someone can not get a negative score
-        if (time < 0)
+        if (time < 0 || questIndex > questionArray.length)
         finalScore.textContent = "0";
 }
 
@@ -114,8 +114,9 @@ function getQuestions() {
 
     // for (; questIndex < questionArray.length; questIndex++){ // when I add this line it console logs all index numbers but only display the last one. I tried using event.stopPropagation() and event.stopDefault() but said its not a function // when I do this I also have to takeout the if statement in the if answer statement 
 
-    var currentQ = questionArray[questIndex]; 
-    question.textContent = currentQ.question;
+    var currentQuest = questionArray[questIndex]; 
+    currentQ = currentQuest;
+    question.textContent = currentQ.question; // after the fourth question it is telling me that it cant read undefined properties
     ansContainer.innerHTML = ""; // empty's the button field
     console.log("Index number " + questIndex); //when I first click start this is logging 0 however when I click the fist answer this is logging 1 when I click the second answer though it logs both two and three ?? It only lets you get three questions because of that
 
@@ -132,8 +133,6 @@ function getQuestions() {
 return currentQ;
 }
 
-console.log(currentQ)
-// When I try to make this it's own function it tells me that currentQ is not defined I then add currentQ on the global scope at the top and if I do this by taking the line item var currentQ = questionArray[questIndex]; and moving it to the top then it says that it cna not rea properties of undefined in my if statement in my getAnswer(). If I add var currentQ; to the top same thing. So I add console.log(currentQ) after my getQuestions() and it is undefined. When I console.log(currentQ) at the end of getQuestions() I get what I want ( the question[0]). so I then do a return currentQ and put a console.log(currentQ) after my getQuestions() and it is again undefined --- I added "" to the var currentQ at the top and now it is working except that it is saying that all the answers are wrong.
 // listens to the answer buttons and determines if they are correct or not
 ansContainer.addEventListener("click",function getAnswer (event) {
     var clickedAns = event.target 
@@ -143,21 +142,29 @@ ansContainer.addEventListener("click",function getAnswer (event) {
         rightWrong.textContent = "Correct!";
         ansContainer.innerHTML = "";
         question.innerHTML = "";
-        if (questIndex >= questionArray.length){
+        console.log("the questIndex at answer level is " + questIndex)
+        console.log("Correct!")
+        console.log(questIndex >= 4)// this is still reading false after the 
+        if (questIndex >= 4){
+            console.log("Q Right are you trying to endgame?")
             endGame()
         } else {
             showNextQuestion()
+            console.log("....")
         }
 
       } else {
         rightWrong.textContent = "Wrong!";
-        console.log("wrong")
         ansContainer.innerHTML = "";
         question.innerHTML = "";
         time = time -20;
         counter.textContent = time;
-        if (questIndex >= questionArray.length){
+        console.log("the questIndex at answer level is " + questIndex) 
+        console.log(questIndex >= 4)
+
+        if (questIndex >= 4){
             endGame()
+            console.log("Q Wrong are you trying to endgame?")
         } else {
             showNextQuestion()
         }
@@ -172,7 +179,8 @@ function showNextQuestion () {
     console.log("that was question " + questIndex)
 }
 
-function leaderBoard (){
+function leaderBoard() {
+    intro.setAttribute("class", "hide");
     scoreBoard.removeAttribute("class", "hide");
     gameOver.setAttribute("class", "hide");
 
@@ -190,7 +198,8 @@ function leaderBoard (){
 function beginAgain(){
     location.reload()
 }
-    
+
+highLink.addEventListener("click", leaderBoard)
 again.addEventListener("click", beginGame)
 submitInt.addEventListener("click", leaderBoard)
 startBtn.addEventListener("click", beginGame)
