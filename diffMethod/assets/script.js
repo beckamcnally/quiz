@@ -12,9 +12,10 @@ var finalScore = document.getElementById("finalScore")
 var submitInt = document.getElementById("submitInt") 
 var ints = document.getElementById("ints")
 var scoreBoard = document.getElementById("scoreBoard")
+var leaderBoardContainer = document.getElementById("leaderBoardContainer")
 var clear = document.getElementById("clear")
 var again = document.getElementById("again")
-var leaderBoardInts = document.querySelectorAll(".leaderBoardInts")
+
 var highLink =  document.getElementById("highLink")
 var questionArray = [
     {
@@ -66,17 +67,24 @@ var questionArray = [
         answer: "A. console.log()"
     }, // could not get my other questions because needed to use code snippets in question
 ]
+
+var leaderBoardArray = [
+    {
+        initials: "",
+        score: "",
+    }
+]
 var currentQ = "";
 var questIndex = 0;
 var time = questionArray.length * 30;
 var endTime = "";
 var userAns = "";
+var score = "";
 
 // Function 1 - start the clock, hide intro and unhide the questions
 function beginGame(){
     intro.setAttribute("class", "hide");
-    var interval = setInterval(workingClock, 1000);
-    endTime = interval
+    endTime = setInterval(workingClock, 1000);
     getQuestions();
 }
 
@@ -91,23 +99,21 @@ function workingClock(){
     }   
 }
 
-
 // Ends game and takes us to final score screen where user can enter their initials
 function endGame(){
         questContainer.setAttribute("class", "hide");
-        gameOver.removeAttribute("class", "hide");
-        clock.setAttribute("class", "hidden");
+        gameOver.removeAttribute("class"); // removed hide
+        finalScore.textContent = time; // removed var s
+        //moved clock.setAttribute("class", "hidden"); to after clearInter
         clearInterval(endTime);  
-        finalScore.textContent = time;
-        console.log(time) 
-        
+        clock.setAttribute("class", "hidden");
+        // score = score + s // added var s here and var score at the top so that I am declaring on the global scope
         // makes it so that someone can not get a negative score
-        if (time < 0 || questIndex > questionArray.length)
+        if (time < 0)
         finalScore.textContent = "0";
+
+
 }
-
-
-
 
 //Function 2 - get a question from the array, and the create the buttons for my array of choices
 function getQuestions() {
@@ -116,11 +122,10 @@ function getQuestions() {
 
     var currentQuest = questionArray[questIndex]; 
     currentQ = currentQuest;
-    question.textContent = currentQ.question; // after the fourth question it is telling me that it cant read undefined properties
-    ansContainer.innerHTML = ""; // empty's the button field
-    console.log("Index number " + questIndex); //when I first click start this is logging 0 however when I click the fist answer this is logging 1 when I click the second answer though it logs both two and three ?? It only lets you get three questions because of that
+    question.textContent = currentQ.question; 
+    ansContainer.innerHTML = ""; 
 
-    // this for loop creates the button for each question - it is inside the getQuestions function because I tried to make it its own function and their were too many variables that we undefined
+    // this for loop creates the button for each question 
     for (var i = 0; i < currentQ.choices.length; i++) {
         questContainer.removeAttribute("class", "hide");
         var selection = currentQ.choices[i];
@@ -130,76 +135,141 @@ function getQuestions() {
         selectBtn.textContent = selection;
         ansContainer.appendChild(selectBtn);
    }
-return currentQ;
+return currentQ; // return makes the whole function a question
 }
-
+console.log(currentQ)
 // listens to the answer buttons and determines if they are correct or not
 ansContainer.addEventListener("click",function getAnswer (event) {
     var clickedAns = event.target 
     userAns = clickedAns
     
-    if (userAns.textContent === currentQ.answer){
-        rightWrong.textContent = "Correct!";
-        ansContainer.innerHTML = "";
-        question.innerHTML = "";
-        console.log("the questIndex at answer level is " + questIndex)
-        console.log("Correct!")
-        console.log(questIndex >= 4)// this is still reading false after the 
-        if (questIndex >= 4){
-            console.log("Q Right are you trying to endgame?")
-            endGame()
-        } else {
-            showNextQuestion()
-            console.log("....")
-        }
+    // if (userAns.textContent === currentQ.answer)
+    if (clickedAns.value !== questionArray[questIndex].answer) {
 
-      } else {
         rightWrong.textContent = "Wrong!";
         ansContainer.innerHTML = "";
         question.innerHTML = "";
-        time = time -20;
+        time = time -20; // Manuel also said you get a buzzer when he was introing 
         counter.textContent = time;
-        console.log("the questIndex at answer level is " + questIndex) 
-        console.log(questIndex >= 4)
 
-        if (questIndex >= 4){
-            endGame()
-            console.log("Q Wrong are you trying to endgame?")
-        } else {
-            showNextQuestion()
-        }
-      }
+
+
+
+
+
+    } else {
+rightWrong.textContent = "Correct!";
+        ansContainer.innerHTML = "";
+        question.innerHTML = "";
+
+
+    }
+
+    questIndex++;
+
+    if (time <= 0 || questIndex >= 4) {
+        endGame()
+    } else {
+        console
+        showNextQuestion()
+    }
+        
+    //     if (questIndex >= 4){
+    //         showNextQuestion()
+    //     } else {
+    //         endGame()
+    //     }
+
+    //   } else {
+
+    //     if (questIndex >= 4){
+    //         endGame()
+    //     } else {
+    //         showNextQuestion()
+    //     }
+    //   }// 
 });
  
 
 // this generates next question
 function showNextQuestion () {
     questIndex++; // progresses the index by one so that it gens the next question
-    getQuestions() //?? maybe because I am calling the function with in the function    
-    console.log("that was question " + questIndex)
+    getQuestions() 
 }
 
+// this displays the leaderboard and 
 function leaderBoard() {
-    intro.setAttribute("class", "hide");
-    scoreBoard.removeAttribute("class", "hide");
+    var userInitials = ints.value.trim()
+    intro.setAttribute("class", "hide"); 
+    scoreBoard.removeAttribute("class", "hide"); 
     gameOver.setAttribute("class", "hide");
 
-    localStorage.setItem("Initials", ints.value)
-    //localStorage.setItem("Score", )
-    localStorage.getItem("Initials")
+    if (userInitials !== ""){
+        var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
 
-    leadIndex = 0 
+        var newScore = {
+        scoreProp: time,
+        initials: userInitials,
+    }
+    leaderBoardArray.push(newScore); 
+    localStorage.setItem("leaderBoardArray", JSON.stringify(leaderBoardArray))
 
-    // forEach( leaderBoardInts =>  {
-    //     leaderBoardInts.textContent.localStorage.getItem("Initials")
-    // });
-}
+    leaderBoardArray.sort(function(a,b){
+        return b.scoreProp - a.scoreProp;
+    })
+    
+    for (var i = 0; i < leaderBoardArray.length; i++){
+        var lbcline = document.createElement("li")
+        lbcline.textContent = leaderBoardArray[i].initials + "-" + leaderBoardArray[i].scoreProp;
+        leaderBoardContainer.appendChild(lbcline)
+    }
+
+    } 
+
+
+    
+// =========
+    console.log(leaderBoardArray)
+    console.log(score, ints.value)
+
+    // leaderBoardArray[0].score.push(score)
+    // leaderBoardArray[0].initials.push(ints.value) said is not a function
+    // local storage makes its own object but only holds the two values as the one string what I want to do is push? the values into the objectarray AS A NEW OBJECT IN THe array and then save that new value as string in local storage and then and the retrieve it and print that 
+    // localStorage.setItem("Initials", ints.value)
+    // localStorage.getItem("Initials")
+    // localStorage.setItem("Score", score)
+    // localStorage.getItem("Score")
+    
+    
+    
+    // will let it read it as a string and then we will need to take the info out by
+   
+    // var leaderBoardArray_deserialized = JSON.parse(localStorage.getItem("leaderBoardArray"))
+    // leaderBoardContainer.innerHTML = leaderBoardArray_deserialized
+//  Jerome says that if you want to use and array that you will need to stingify it on the way in and parse it on the way out.   
+
+        
+        
+    
+    
+
+} 
+console.log(localStorage)
+
 
 function beginAgain(){
+    intro.removeAttribute("class", "hide");
+    scoreBoard.setAttribute("class", "hide");
+    beginGame()
+}
+
+function clearStorage(){
+    localStorage.clear()
     location.reload()
 }
 
+clear.addEventListener("click", clearStorage)
 highLink.addEventListener("click", leaderBoard)
-again.addEventListener("click", beginGame)
+again.addEventListener("click", beginAgain)
 submitInt.addEventListener("click", leaderBoard)
 startBtn.addEventListener("click", beginGame)
