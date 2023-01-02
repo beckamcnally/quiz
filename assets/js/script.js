@@ -102,7 +102,8 @@ function workingClock(){
 // Ends game and takes us to final score screen where user can enter their initials
 function endGame(){
         questContainer.setAttribute("class", "hide");
-        gameOver.removeAttribute("class"); // removed hide
+        gameOver.removeAttribute("class");// removed hide
+        gameOver.style.display = "flex"; 
         finalScore.textContent = time; // removed var s
         //moved clock.setAttribute("class", "hidden"); to after clearInter
         clearInterval(endTime);  
@@ -175,6 +176,8 @@ function leaderBoard() {
     var userInitials = ints.value.trim() 
     scoreBoard.removeAttribute("class", "hide"); 
     gameOver.setAttribute("class", "hide");
+    gameOver.style.display = "none";
+    
 
     if (userInitials !== "" ) {
         var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];

@@ -44,13 +44,22 @@ a:hover {
     text-align: justify;
     margin: 200px 300px;
     padding: 10px 40px; 
-
 }
 
 #scoreBoard, #game-over {
-    text-align: justify;
+    text-align: left;
     margin: 200px 50px 100px 450px;
     padding: 10px 40px; 
+}
+
+#game-over {
+    flex-direction: column;
+}
+
+#submitInt {
+    align-self: center;
+    margin-top: 10px;
+    margin-right: 70%;
 }
 
 #startbtn {
@@ -68,7 +77,7 @@ a:hover {
 
 #questContainer {
     flex-direction: column;
-    text-align: justify;
+    text-align: left;
     margin: 200px 300px;
     padding: 10px 40px; 
 }
@@ -76,7 +85,6 @@ a:hover {
 #ansContainer {
     display: flex;
     flex-direction: column;
-
 }
 
 #ansContainer button {
@@ -108,4 +116,72 @@ h1 {
 
 .hidden {
     visibility: hidden;
+}
+
+
+
+
+@media screen and (max-width: 992px) {
+
+    #intro {
+        margin: 50px 150px; 
+    }
+
+    #questContainer {
+        margin: 50px 150px; 
+        font-size: 20px;
+    }
+
+    #scoreBoard, #game-over {   
+        margin: 100px 25px 5px 225px; 
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    #intro {
+        margin: 25px 50px; 
+    }
+
+    #questContainer {
+        margin: 25px 75px; 
+        font-size: 20px;
+    }
+
+    #scoreBoard, #game-over {   
+        margin: 50px 10px 5px 175px; 
+    }
+
+    #submitInt {
+        margin-right: 50%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    header h1 {
+        position: absolute;
+        bottom: -40px;
+        left: 55px;
+        
+    }
+
+    #scoreBoard, #game-over {   
+        margin-left: 75px; 
+    }
+
+     #intro {
+        margin: auto; 
+    }
+
+    #questContainer {
+        margin: auto; 
+        font-size: 15px;
+    }
 }

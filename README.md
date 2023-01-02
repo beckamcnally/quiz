@@ -17,25 +17,25 @@
 
 ## Description 
 
-    <!-- [Visit the Deployed Site](#) -->
+[Visit the Deployed Site](https://beckamcnally.github.io/quiz/)
 
-    Tests your knowledge of JavaScript Basics in a fun challenging way. This site allows you to save your score and come back later to improve your score. 
+Tests your knowledge of JavaScript Basics in a fun challenging way. This site allows you to save your score and come back later to improve your score. 
 
-    <!-- ![Site Langing Page](#) -->
+<!-- ![Site Langing Page](#) -->
 
 ## Learning Points 
 
-    ### Skills acquired or practiced in this project
+### Skills acquired or practiced in this project
 
-    * HTML
-    * CSS
-    * JavaScript
+* HTML
+* CSS
+* JavaScript
 
 ## Author Info
 
-    ### Becka McNally 
+### Becka McNally 
 
-    * [Portfolio](https://beckamcnally.github.io/beckamcnally/)
-    * [LinkedIn](https://www.linkedin.com/in/becka-mcnally-21520670)
-    * [Github](https://github.com/beckamcnally)
+* [Portfolio](https://beckamcnally.github.io/beckamcnally/)
+* [LinkedIn](https://www.linkedin.com/in/becka-mcnally-21520670)
+* [Github](https://github.com/beckamcnally)
 
