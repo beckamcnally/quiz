@@ -4,159 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assests/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>JavaScript Quiz</title>
 </head>
 <body>
     <header>
-        <a id="highLink" href="#score-board" alt="link to high scores chart">High Scores</a>
+        <a id="highLink" href="#" alt="link to high scores chart">High Scores</a>
         <h1 >JavaScript Quiz</h1>
-        <p id="clock">Time: <span id="counter">0</span> </p>
+        <p id="clock" class="hidden">Time: <span id="counter">0</span> </p>
     </header>
-        
+
     <main>
         <section id="intro">    
             <p>This quiz is designed to test your knowledge of JavaCript Basics in a fun and challenging way. When you complete the quiz enter your initials to see how you rank against your peers. </p>
             <p>To begin press <span>start quiz</span> below. When you begin the quiz a time will start in the upper right hand corner you will begin with 5 minutes to complete the quiz, if you get a question wrong then 30 seconds will be deducted of the clock. If the time runs out then the quiz is over. </p>
             <p>Good Luck!</p>
-            <button id="startbutton">Start Quiz</button>
-        </section>    
-    <div id="listOfQuestions">
-        <section id="q1" class="questions">
-            <p >How do you link to an external JavaScript file in your HTML document? </p>
-            <button class="wrong">A. Add link tag in the head.</button>
-            <button class="wrong">B. After the HTML closing tag use a script tag.</button>
-            <button class="correct">C. Add a script tag at the end of your document just before the closing body tag for external JS.</button>
-            <button class="wrong">D. Don't worry about adding it in the HTML document, just have it in the same folder as your index.HTML</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q2" class="questions">
-            <p >What is one way to assign a variable in JavaScript?</p>
-            <button class="wrong">A. variable = value</button>
-            <button class="correct">B. var = value </button>
-            <button class="wrong">C. var === value</button>
-            <button class="wrong">D. variable === value</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q3" class="questions">
-            <p >Giving a variable value before defining is called _____.</p>
-            <button class="wrong">A. Propping</button>
-            <button class="wrong">B. Scaffolding</button>
-            <button class="wrong">C. Joisting</button>
-            <button class="correct">D. Hoisting</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q4" class="questions">
-            <p>What are the seven primitive data types?</p>
-            <button class="wrong">A. string, smallint, bigint, boolean, undefined, symbol, and null </button>
-            <button class="correct">B. string, number, bigint(number), boolean, undefined, symbol, and null</button>
-            <button class="wrong">C. string, smallint, bigint(number), boolean, undefined, symbol, and n/a</button>
-            <button class="wrong">D. string, NaN, number, boolean, undefined, symbol, and null</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q5" class="questions">
-            <p>In order to display writing in the browser console you would use which of the following?</p>
-            <button class="correct">A. console.log()</button>
-            <button class="wrong">B. print.console()</button>
-            <button class="wrong">C. innerHTML</button>
-            <button class="wrong">D. document.write()</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q6" class="questions">
-            <p>var = ["picture", "balloon", "dumbo", "mouse"]; is an example of a/an ________. </p>
-            <button class="wrong">A. List</button>
-            <button class="wrong">B. String</button>
-            <button class="correct">C. Array</button>
-            <button class="wrong">D. Large variable</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q7" class="questions">
-            <p>
-                <pre>
-for (var i = 0; i < array.length; i++) {
-     console.log(array[i]);
-}
-</pre>is an example of a/an ______. </p>
-            <button class="wrong">A. Four Loop</button>
-            <button class="correct">B. For Loop</button>
-            <button class="wrong">C. Iteration Loop</button>
-            <button class="wrong">D. Iteration Statement</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q8" class="questions">
-            <p>
-                <pre>
-function animals(){
-    var dog = "Hiccup"
-    console.log("I love my animals, " + dog)
+            <button id="startbtn">Start Quiz</button>
+        </section>  
 
-    var otherAnimals() {
-       var cat = Zandar
-       console.log("I love my animals, " + dog + " and " + cat + "?")
-    }
+        <section id="questContainer" class="hide">
+            <h2 id="question"></h2>
+            <div id="ansContainer">
+                <button></button>
+            </div>
+            <h3 id="rightWrong"></h3>
+        </section>
 
-}
-                </pre>
-            Given the above the variable cat is declared on the ______ scope.
-            </p>
-            <button class="wrong">A. JS</button>
-            <button class="wrong">B. Local</button>
-            <button class="wrong">C. Global</button>
-            <button class="correct">D. Lexical</button>
-            <h3 class="rightWrong"></h3>
+        <section id="game-over" class="hide">
+            <h2 >You are done!</h2>
+            <label>Score: <span id="finalScore">0</span></label>
+            <label>Enter your Initials: <input type="text" id="ints"> </label>   
+            <button id="submitInt">Submit</button>         
         </section>
-        <section id="q9" class="questions">
-            <p>
-                <pre>
-function animals(){
-    var dog = "Hiccup"
-    console.log("I love my animals, " + dog)
-                
-    var otherAnimals() {
-    var cat = "Zandar"
-    console.log("I love my animals, " + dog + " and " + cat + "!")
-    }
-                
-}
-            </pre>
-            Given the above animals() is an example of a/an _______.</p>
-            <button class="correct">A. Function</button>
-            <button class="wrong">B. Statement</button>
-            <button class="wrong">C. Array</button>
-            <button class="wrong">D. Variable</button>
-            <h3 class="rightWrong"></h3>
-        </section>
-        <section id="q10" class="questions">
-            <p><pre>
-var dog = {
-    name: "Hiccup"
-    age: 2
-    birthday: "06-11-2020"
-    species: "canine"
-}
-            </pre> The above is an example of a/an ______.  </p>
 
-            <button class="wrong">A. Array</button>
-            <button class="wrong">B. Large Variable</button>
-            <button class="wrong">C. Collection</button>
-            <button class="correct">D. Object</button>
-            <h3 class="rightWrong"></h3>
+        <section id="scoreBoard" class="hide">
+                <h2>Score Board</h2>
+                <ul id="leaderBoardContainer">
+                    
+                </ul>
+            <button id="again">Try Again</button>
+            <button id="clear">Clear Scores</button>
         </section>
-    </div>
-        <section id="final-score">
-            <h2>All Done</h2> 
-            <p>Your final score:</p>
-            <label>Enter your initials:</label><input type="text" id="ints"></input>
-            <button id="initial-button">Submit</button>
-        </section>
-        <section id="score-board">
-            <h2>High Score</h2>
-           <ul>
-            <li></li>
-            
-           </ul>
-        </section>
+
     </main>
-<script src="./assests/js/script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
