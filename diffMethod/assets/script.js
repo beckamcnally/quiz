@@ -176,7 +176,7 @@ function leaderBoard() {
     scoreBoard.removeAttribute("class", "hide"); 
     gameOver.setAttribute("class", "hide");
 
-    if (userInitials !== "" ) {// took out becuase want score board to display when link is clicked. With out this though even though the score bord shows
+    if (userInitials !== "" ) {
         var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
 
         var newScore = {
@@ -207,28 +207,28 @@ function clearStorage(){
     localStorage.clear()
     location.reload()
 }
-
+// only for viewing 
 function ViewLB(){
-    intro.setAttribute("class", "hide"); 
-    questContainer.setAttribute("class", "hide");
-    scoreBoard.removeAttribute("class", "hide"); 
-    var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
+  intro.setAttribute("class", "hide"); 
+  questContainer.setAttribute("class", "hide");
+  scoreBoard.removeAttribute("class", "hide"); 
+  var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
 
-    clearInterval(endTime);  
-    clock.setAttribute("class", "hidden");
+  clearInterval(endTime);  
+  clock.setAttribute("class", "hidden");
 
-localStorage.setItem("leaderBoardArray", JSON.stringify(leaderBoardArray))
+  localStorage.setItem("leaderBoardArray", JSON.stringify(leaderBoardArray))
 
-leaderBoardArray.sort(function(a,b){
+  leaderBoardArray.sort(function(a,b){
     return b.scoreProp - a.scoreProp;
-})
+  })
 
-for (var i = 0; i < leaderBoardArray.length; i++){
+  for (var i = 0; i < leaderBoardArray.length; i++){
     lbcline = document.createElement("li")
  
     lbcline.textContent = i+1 + ". " + leaderBoardArray[i].initials + "-" + leaderBoardArray[i].scoreProp;
     leaderBoardContainer.appendChild(lbcline)
-}
+  }
 }
 
 

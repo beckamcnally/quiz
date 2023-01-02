@@ -21,10 +21,6 @@ h1 {
     
 }
 
-header a, header p {
-    border: 5px solid beige;
-    /* flex: 1, 1, 50px; */
-}
 
 #intro, #final-score, #score-board {
     text-align: justify;
