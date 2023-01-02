@@ -76,10 +76,10 @@ var leaderBoardArray = [
 ]
 var currentQ = "";
 var questIndex = 0;
-var time = questionArray.length * 30;
+var time = questionArray.length * 20;
 var endTime = "";
-var userAns = "";
 var score = "";
+var lbcline = "";
 
 // Function 1 - start the clock, hide intro and unhide the questions
 function beginGame(){
@@ -135,82 +135,54 @@ function getQuestions() {
         selectBtn.textContent = selection;
         ansContainer.appendChild(selectBtn);
    }
-return currentQ; // return makes the whole function a question
+// return currentQ;
 }
-console.log(currentQ)
+
 // listens to the answer buttons and determines if they are correct or not
 ansContainer.addEventListener("click",function getAnswer (event) {
-    var clickedAns = event.target 
-    userAns = clickedAns
+    userAns = event.target 
     
-    // if (userAns.textContent === currentQ.answer)
-    if (clickedAns.value !== questionArray[questIndex].answer) {
 
+    if (userAns.value !== questionArray[questIndex].answer) {
         rightWrong.textContent = "Wrong!";
         ansContainer.innerHTML = "";
         question.innerHTML = "";
         time = time -20; // Manuel also said you get a buzzer when he was introing 
         counter.textContent = time;
-
-
-
-
-
-
     } else {
-rightWrong.textContent = "Correct!";
+        rightWrong.textContent = "Correct!";
         ansContainer.innerHTML = "";
         question.innerHTML = "";
-
-
     }
-
-    questIndex++;
 
     if (time <= 0 || questIndex >= 4) {
         endGame()
     } else {
-        console
+        
         showNextQuestion()
     }
-        
-    //     if (questIndex >= 4){
-    //         showNextQuestion()
-    //     } else {
-    //         endGame()
-    //     }
-
-    //   } else {
-
-    //     if (questIndex >= 4){
-    //         endGame()
-    //     } else {
-    //         showNextQuestion()
-    //     }
-    //   }// 
 });
  
 
 // this generates next question
 function showNextQuestion () {
-    questIndex++; // progresses the index by one so that it gens the next question
+    questIndex++; 
     getQuestions() 
 }
 
 // this displays the leaderboard and 
 function leaderBoard() {
-    var userInitials = ints.value.trim()
-    intro.setAttribute("class", "hide"); 
+    var userInitials = ints.value.trim() 
     scoreBoard.removeAttribute("class", "hide"); 
     gameOver.setAttribute("class", "hide");
 
-    if (userInitials !== ""){
+    if (userInitials !== "" ) {// took out becuase want score board to display when link is clicked. With out this though even though the score bord shows
         var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
 
         var newScore = {
         scoreProp: time,
         initials: userInitials,
-    }
+        }
     leaderBoardArray.push(newScore); 
     localStorage.setItem("leaderBoardArray", JSON.stringify(leaderBoardArray))
 
@@ -219,48 +191,16 @@ function leaderBoard() {
     })
     
     for (var i = 0; i < leaderBoardArray.length; i++){
-        var lbcline = document.createElement("li")
-        lbcline.textContent = leaderBoardArray[i].initials + "-" + leaderBoardArray[i].scoreProp;
+        lbcline = document.createElement("li")
+     
+        lbcline.textContent = i+1 + ". " + leaderBoardArray[i].initials + "-" + leaderBoardArray[i].scoreProp;
         leaderBoardContainer.appendChild(lbcline)
     }
-
-    } 
-
-
-    
-// =========
-    console.log(leaderBoardArray)
-    console.log(score, ints.value)
-
-    // leaderBoardArray[0].score.push(score)
-    // leaderBoardArray[0].initials.push(ints.value) said is not a function
-    // local storage makes its own object but only holds the two values as the one string what I want to do is push? the values into the objectarray AS A NEW OBJECT IN THe array and then save that new value as string in local storage and then and the retrieve it and print that 
-    // localStorage.setItem("Initials", ints.value)
-    // localStorage.getItem("Initials")
-    // localStorage.setItem("Score", score)
-    // localStorage.getItem("Score")
-    
-    
-    
-    // will let it read it as a string and then we will need to take the info out by
-   
-    // var leaderBoardArray_deserialized = JSON.parse(localStorage.getItem("leaderBoardArray"))
-    // leaderBoardContainer.innerHTML = leaderBoardArray_deserialized
-//  Jerome says that if you want to use and array that you will need to stingify it on the way in and parse it on the way out.   
-
-        
-        
-    
-    
-
-} 
-console.log(localStorage)
-
+    }
+}
 
 function beginAgain(){
-    intro.removeAttribute("class", "hide");
-    scoreBoard.setAttribute("class", "hide");
-    beginGame()
+    location.reload()
 }
 
 function clearStorage(){
@@ -268,8 +208,32 @@ function clearStorage(){
     location.reload()
 }
 
+function ViewLB(){
+    intro.setAttribute("class", "hide"); 
+    questContainer.setAttribute("class", "hide");
+    scoreBoard.removeAttribute("class", "hide"); 
+    var leaderBoardArray = JSON.parse(localStorage.getItem("leaderBoardArray")) || [];
+
+    clearInterval(endTime);  
+    clock.setAttribute("class", "hidden");
+
+localStorage.setItem("leaderBoardArray", JSON.stringify(leaderBoardArray))
+
+leaderBoardArray.sort(function(a,b){
+    return b.scoreProp - a.scoreProp;
+})
+
+for (var i = 0; i < leaderBoardArray.length; i++){
+    lbcline = document.createElement("li")
+ 
+    lbcline.textContent = i+1 + ". " + leaderBoardArray[i].initials + "-" + leaderBoardArray[i].scoreProp;
+    leaderBoardContainer.appendChild(lbcline)
+}
+}
+
+
 clear.addEventListener("click", clearStorage)
-highLink.addEventListener("click", leaderBoard)
+highLink.addEventListener("click", ViewLB)
 again.addEventListener("click", beginAgain)
 submitInt.addEventListener("click", leaderBoard)
 startBtn.addEventListener("click", beginGame)
