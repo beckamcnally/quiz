@@ -21,7 +21,7 @@
 
 Tests your knowledge of JavaScript Basics in a fun challenging way. This site allows you to save your score and come back later to improve your score. 
 
-<!-- ![Site Langing Page](#) -->
+![Site Landing Page](./assets/images/sitegif.gif)
 
 ## Learning Points 
 
