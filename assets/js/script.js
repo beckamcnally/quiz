@@ -65,7 +65,18 @@ var questionArray = [
             "C. innerHTML", 
             "D. document.write()"],
         answer: "A. console.log()"
-    }, // could not get my other questions because needed to use code snippets in question
+    },
+    
+    {
+            question: "Who invented JavaScript and in what year?",
+            choices: [
+                "A. Brendan Eich, 1995", 
+                "B. Sylvester Stallone, 1980", 
+                "C. Henrey Albony, 1991", 
+                "D. Georage Washington, unknown" ],
+            answer: "A. Brendan Eich, 1995",
+           
+    },
 ]
 
 var leaderBoardArray = [
@@ -76,7 +87,7 @@ var leaderBoardArray = [
 ]
 var currentQ = "";
 var questIndex = 0;
-var time = questionArray.length * 20;
+var time = (questionArray.length -1) * 20;
 var endTime = "";
 var score = "";
 var lbcline = "";
@@ -156,7 +167,7 @@ ansContainer.addEventListener("click",function getAnswer (event) {
         question.innerHTML = "";
     }
 
-    if (time <= 0 || questIndex >= 4) {
+    if (time <= 0 || questIndex >= 5) {
         endGame()
     } else {
         
