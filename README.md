@@ -19,17 +19,26 @@
 
 [Visit the Deployed Site](https://beckamcnally.github.io/quiz/)
 
-Tests your knowledge of JavaScript Basics in a fun challenging way. This site allows you to save your score and come back later to improve your score. 
+JavaScript Coding Quiz is a web application that allows coding students to take a timed quiz on JavaScript fundamentals that stores high scores. The quiz is multiple-choice and the user is presented with a series of questions. If the user selects the correct answer, they move on to the next question. If the user selects the wrong answer, time is subtracted from the clock. At the end of the quiz, the user can save their initials and score to compare their progress to their peers.
 
 ![Site Landing Page](./assets/images/sitegif.gif)
 
+## Table of Contents 
+
+* [Usage](#usage)
+* [Learning Points](#learning-points)
+* [Author Info](#author-info)
+
+## Usage
+To use the application, simply click the "Start Quiz" button on the home page. Once the quiz has started, answer each multiple-choice question to the best of your ability. If you select the wrong answer, time will be subtracted from the clock. Once you have completed all the questions, or the timer reaches zero, the game will end. You will then be prompted to save your initials and score to compare your progress to your peers. You can view the high scores by clicking the "View High Scores" button on the home page.
+
 ## Learning Points 
 
-### Skills acquired or practiced in this project
-
-* HTML
-* CSS
-* JavaScript
+* Using JavaScript to manipulate the DOM
+* Using JavaScript to create and handle events
+* Using JavaScript to manipulate local storage
+* Working with timers in JavaScript
+* Using CSS to create a responsive design
 
 ## Author Info
 
